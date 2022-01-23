@@ -1,7 +1,7 @@
 package block
 
 import (
-	"github.com/fxamacker/cbor/v2"
+//	"github.com/fxamacker/cbor/v2"
 )
 
 const (
@@ -60,7 +60,7 @@ type ByronMainBlockBody struct {
 	TxPayload []interface{}
 	// We keep this field as raw CBOR, since it contains a map with []byte
 	// keys, which Go doesn't allow
-	SscPayload cbor.RawMessage
+	SscPayload interface{} //cbor.RawMessage
 	DlgPayload []interface{}
 	UpdPayload []interface{}
 }

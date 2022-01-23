@@ -10,6 +10,13 @@ func CborEncode(data interface{}) ([]byte, error) {
 }
 
 func CborDecode(dataBytes []byte, dest interface{}) error {
-	err := cbor.Unmarshal(dataBytes, dest)
+	decOptions := cbor.DecOptions{
+		MapKeyByteString: cbor.MapKeyByteStringWrap,
+	}
+	decMode, err := decOptions.DecMode()
+	if err != nil {
+		return err
+	}
+	err = decMode.Unmarshal(dataBytes, dest)
 	return err
 }

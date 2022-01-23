@@ -178,7 +178,7 @@ func chainSyncRollForwardHandler(blockType uint, blockData interface{}) error {
 		fmt.Printf("found Byron EBB block\n")
 	case block.BLOCK_TYPE_BYRON_MAIN:
 		b := blockData.(block.ByronMainBlock)
-		fmt.Printf("era = Byron, epoch = %d, slot = %d, prevBlock = %s\n", b.Header.ConsensusData.SlotId.Epoch, b.Header.ConsensusData.SlotId.Slot, b.Header.PrevBlock)
+		fmt.Printf("era = Byron, epoch = %d, slot = %d, prevBlock = %s, sscPayload = %#v\n", b.Header.ConsensusData.SlotId.Epoch, b.Header.ConsensusData.SlotId.Slot, b.Header.PrevBlock, b.Body.SscPayload)
 	case block.BLOCK_TYPE_SHELLEY:
 		b := blockData.(block.ShelleyBlock)
 		fmt.Printf("era = Shelley, slot = %d, block_no = %d, prevHash = %s\n", b.Header.Body.Slot, b.Header.Body.BlockNumber, b.Header.Body.PrevHash)
